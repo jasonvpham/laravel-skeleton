@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id')->autoIncrement();
             $table->BigInteger('role_id')->unsigned();
-            $table->tinyInteger('status');
+            $table->tinyInteger('status')->default(1);
             $table->string('firstname');
             $table->string('lastname');
             $table->bigInteger('landline');
@@ -26,9 +26,6 @@ class CreateUsersTable extends Migration
             $table->string('password')->unique();
             $table->rememberToken();
             $table->timestamps();
-
-            // Foreign
-//            $table->foreign('role_id')->references('id')->on('roles');
         });
     }
 
